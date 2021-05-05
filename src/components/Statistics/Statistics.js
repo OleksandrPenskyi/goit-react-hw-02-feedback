@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Statistics.module.css';
 
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => (
-  <div>
+  <div className={styles.Statistics}>
     <h2>Statistics</h2>
     <ul className={styles.Stat__List}>
       <li className={styles.Stat__Item}>

@@ -1,6 +1,9 @@
-/* .Stat__List {
-  list-style: none;
+.Statistics {
+  margin-bottom: 20px;
 }
 
-.Stat__Item {
-} */
+.Stat__List {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
