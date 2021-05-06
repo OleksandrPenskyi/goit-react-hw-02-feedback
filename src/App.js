@@ -7,7 +7,8 @@ import Notification from './components/Notification';
 class App extends Component {
   state = { good: 0, neutral: 0, bad: 0 };
 
-  onLeaveFeedback = name => {
+  onLeaveFeedback = event => {
+    const name = event.target.id;
     this.setState(prevState => ({
       [name]: prevState[name] + 1,
     }));
