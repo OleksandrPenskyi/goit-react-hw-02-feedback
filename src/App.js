@@ -8,31 +8,31 @@ class App extends Component {
   state = { good: 0, neutral: 0, bad: 0 };
 
   onLeaveFeedback = event => {
-    const name = event.target.id;
+    const { name } = event.target;
     this.setState(prevState => ({
       [name]: prevState[name] + 1,
     }));
   };
-  countTotalFeedback = (good, neutral, bad) => good + neutral + bad;
-  countPositiveFeedbackPercentage = (good, neutral, bad) => {
-    let averagePercent = Math.round((good / (good + neutral + bad)) * 100);
+
+  countTotalFeedback = () => {
+    return Object.values(this.state).reduce((acc, value) => acc + value, 0);
+  };
+
+  countPositiveFeedbackPercentage = good => {
+    let averagePercent = Math.round((good / this.countTotalFeedback()) * 100);
 
     if (isNaN(averagePercent)) {
       return (averagePercent = 0);
     }
 
-    return averagePercent;
+    return averagePercent + '%';
   };
 
   render() {
-    const { good, neutral, bad } = this.state;
-    const total = this.countTotalFeedback(good, neutral, bad);
-    const positivePercentage = this.countPositiveFeedbackPercentage(
-      good,
-      neutral,
-      bad,
-    );
     const options = Object.keys(this.state);
+    const { good, neutral, bad } = this.state;
+    const total = this.countTotalFeedback();
+    const positivePercentage = this.countPositiveFeedbackPercentage(good);
 
     return (
       <Section title="Please leave feedback">
