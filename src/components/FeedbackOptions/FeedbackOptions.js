@@ -2,27 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './FeedbackOptions.module.css';
 
-const Feedback = ({ options, onLeaveFeedback }) => {
-  const onHandleClick = event => {
-    onLeaveFeedback(event);
-  };
-
-  return (
-    <div className={styles.Feedback__list}>
-      {options.map(item => (
-        <button
-          onClick={onHandleClick}
-          type="button"
-          key={item}
-          className={styles.BtnItem}
-          name={item}
-        >
-          {item}
-        </button>
-      ))}
-    </div>
-  );
-};
+const Feedback = ({ options, onLeaveFeedback }) => (
+  <div className={styles.Feedback__list}>
+    {options.map(item => (
+      <button
+        onClick={onLeaveFeedback}
+        type="button"
+        key={item}
+        className={styles.BtnItem}
+        name={item}
+      >
+        {item}
+      </button>
+    ))}
+  </div>
+);
 
 export default Feedback;
 

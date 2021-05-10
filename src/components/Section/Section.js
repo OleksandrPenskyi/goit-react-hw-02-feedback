@@ -13,4 +13,5 @@ export default Section;
 
 Section.protoTypes = {
   title: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired,
 };
